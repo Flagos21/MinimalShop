@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "33510780686",
+    "project_id": "minimalfirebase-plf109102",
+    "storage_bucket": "minimalfirebase-plf109102.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:33510780686:android:7db287d87adbbdb25db15f",
+        "android_client_info": {
+          "package_name": "com.plf.minimalshop"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBv8Nkw7jRHjOU_elQzz3cf-iubtTRyp5c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
