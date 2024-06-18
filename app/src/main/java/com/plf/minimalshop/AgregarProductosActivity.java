@@ -1,6 +1,5 @@
 package com.plf.minimalshop;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -168,7 +167,7 @@ public class AgregarProductosActivity extends AppCompatActivity {
         String productName = editTextProductName.getText().toString().trim();
         String productDescription = editTextProductDescription.getText().toString().trim();
         String productPrice = editTextProductPrice.getText().toString().trim();
-        String productStock = editTextProductStock.getText().toString().trim();
+        String productStock = editTextProductStock.getText().toString().trim(); // Asegúrate de que productStock sea String
         String productCategory = spinnerProductCategory.getSelectedItem().toString();
         String productBrand = spinnerProductBrand.getSelectedItem().toString();
 
@@ -186,7 +185,7 @@ public class AgregarProductosActivity extends AppCompatActivity {
                     product.put("productName", productName);
                     product.put("productDescription", productDescription);
                     product.put("productPrice", productPrice);
-                    product.put("productStock", productStock);
+                    product.put("productStock", productStock); // Asegúrate de que productStock sea String
                     product.put("productCategory", productCategory);
                     product.put("productBrand", productBrand);
                     product.put("productImageUrl", imageUrl);

@@ -1,7 +1,14 @@
 package com.plf.minimalshop.model;
 
 public class Productos {
-    String productName, productBrand, productCategory, productDescription, productStock, productPrice, productImageUrl;
+    private String productName;
+    private String productBrand;
+    private String productCategory;
+    private String productDescription;
+    private String productStock; // Mantenido como String si es un String en Firestore
+    private String productPrice;
+    private String productImageUrl;
+
     public Productos() {}
 
     public Productos(String productName, String productBrand, String productCategory, String productDescription, String productStock, String productPrice, String productImageUrl) {
