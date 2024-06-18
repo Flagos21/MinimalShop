@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Nombre del Producto -->
+        <EditText
+            android:id="@+id/editTextProductName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/gold"
+            android:hint="NOMBRE DEL PRODUCTO"
+            android:inputType="text"
+            android:padding="10dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/gold" />
+
+        <!-- Descripción del Producto -->
+        <EditText
+            android:id="@+id/editTextProductDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/gold"
+            android:hint="DESCRIPCION DEL PRODUCTO"
+            android:inputType="textMultiLine"
+            android:lines="4"
+            android:padding="10dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/gold" />
+
+        <!-- Precio del Producto -->
+        <EditText
+            android:id="@+id/editTextProductPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/gold"
+            android:hint="PRECIO"
+            android:inputType="numberDecimal"
+            android:padding="10dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/gold" />
+
+        <!-- Categoría del Producto -->
+        <Spinner
+            android:id="@+id/spinnerProductCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/gold"
+            android:padding="10dp" />
+
+        <!-- Marca del Producto -->
+        <Spinner
+            android:id="@+id/spinnerProductBrand"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/gold"
+            android:padding="10dp" />
+
+        <!-- Botón para agregar marca -->
+        <Button
+            android:id="@+id/btnAddBrand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/gold"
+            android:fontFamily="serif"
+            android:text="AGREGAR MARCA"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <!-- Cantidad en Stock -->
+        <EditText
+            android:id="@+id/editTextProductStock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/gold"
+            android:hint="CANTIDAD DEL PRODUCTO"
+            android:inputType="number"
+            android:padding="10dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/gold" />
+
+        <!-- Imagen del Producto -->
+        <ImageView
+            android:id="@+id/imageViewProduct"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@color/black"
+            android:contentDescription="Imagen del Producto"
+            android:padding="10dp"
+            app:srcCompat="@mipmap/logo_minimal"
+            tools:srcCompat="@mipmap/logo_minimal" />
+
+        <Button
+            android:id="@+id/btnSelectImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/gold"
+            android:fontFamily="serif"
+            android:text="SELECCIONAR IMAGEN"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <!-- Botón para agregar producto -->
+        <Button
+            android:id="@+id/btnAddProduct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/gold"
+            android:fontFamily="serif"
+            android:padding="10dp"
+            android:text="AGREGAR PRODUCTO"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+</ScrollView>
