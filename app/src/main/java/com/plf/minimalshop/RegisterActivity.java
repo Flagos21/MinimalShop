@@ -8,11 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -26,7 +23,6 @@ import com.google.firebase.database.FirebaseDatabase;
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText editTextUsername, editTextPassword;
-    private RadioGroup groupType;
     private Button btnRegister;
     private ImageButton btnShowR;
     private FirebaseAuth mAuth;
@@ -36,7 +32,6 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_register);
 
         // Inicializar Firebase Auth
@@ -46,7 +41,6 @@ public class RegisterActivity extends AppCompatActivity {
         // Inicializar vistas
         editTextUsername = findViewById(R.id.editTextText);
         editTextPassword = findViewById(R.id.editTextTextPassword);
-        groupType = findViewById(R.id.groupType);
         btnRegister = findViewById(R.id.btnRegister);
         btnShowR = findViewById(R.id.btnShowR);
 
@@ -86,9 +80,6 @@ public class RegisterActivity extends AppCompatActivity {
     private void registerUser() {
         String username = editTextUsername.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
-        int selectedTypeId = groupType.getCheckedRadioButtonId();
-        RadioButton selectedTypeButton = findViewById(selectedTypeId);
-        String userType = selectedTypeButton == null ? "" : selectedTypeButton.getText().toString();
 
         if (TextUtils.isEmpty(username)) {
             Toast.makeText(this, "Por favor ingresa un nombre de usuario", Toast.LENGTH_SHORT).show();
@@ -100,10 +91,7 @@ public class RegisterActivity extends AppCompatActivity {
             return;
         }
 
-        if (TextUtils.isEmpty(userType)) {
-            Toast.makeText(this, "Por favor selecciona un tipo de usuario", Toast.LENGTH_SHORT).show();
-            return;
-        }
+        final String userType = "CLIENTE"; // Definir siempre como CLIENTE
 
         // Crear usuario en Firebase Auth
         mAuth.createUserWithEmailAndPassword(username + "@minimal.com", password)

@@ -73,7 +73,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="2"
+                android:layout_weight="4"
                 android:orientation="vertical">
 
                 <TextView
@@ -133,47 +133,6 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal|center_vertical"
-                    android:orientation="horizontal">
-
-                    <RadioGroup
-                        android:id="@+id/groupType"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:orientation="horizontal">
-
-                        <RadioButton
-                            android:id="@+id/btnVendedorS"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:buttonTint="@color/gold"
-                            android:fontFamily="serif"
-                            android:text="VENDEDOR"
-                            android:textColor="@color/gold"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <RadioButton
-                            android:id="@+id/btnClienteS"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:buttonTint="@color/gold"
-                            android:checked="false"
-                            android:fontFamily="serif"
-                            android:text="CLIENTE"
-                            android:textColor="@color/gold"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-                    </RadioGroup>
-
-                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
