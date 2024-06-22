@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/black"
+    android:padding="8dp"
+    tools:context=".ProductActivity">
+
+    <!-- Imagen del Producto -->
+    <ImageView
+        android:id="@+id/imageViewProduct"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:contentDescription="Imagen del Producto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.8"
+        app:srcCompat="@mipmap/logo_minimal"
+        tools:srcCompat="@mipmap/logo_minimal" />
+
+    <!-- Nombre del Producto -->
+    <TextView
+        android:id="@+id/textViewProductName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Nombre del Producto"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewProduct"
+        app:layout_constraintWidth_percent="0.8" />
+
+    <!-- Descripción del Producto -->
+    <TextView
+        android:id="@+id/textViewProductDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Descripción del Producto"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewProductName"
+        app:layout_constraintWidth_percent="0.8" />
+
+    <!-- Marca del Producto -->
+    <TextView
+        android:id="@+id/textViewProductBrand"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Marca del Producto"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewProductDescription"
+        app:layout_constraintWidth_percent="0.8" />
+
+    <!-- Categoría del Producto -->
+    <TextView
+        android:id="@+id/textViewProductCategory"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Categoría del Producto"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewProductBrand"
+        app:layout_constraintWidth_percent="0.8" />
+
+    <!-- Stock del Producto -->
+    <TextView
+        android:id="@+id/textViewProductStock"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Stock: 0"
+        android:textColor="@color/gold"
+        android:textSize="16sp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewProductCategory"
+        app:layout_constraintWidth_percent="0.8" />
+
+    <!-- Precio del Producto -->
+    <TextView
+        android:id="@+id/textViewProductPrice"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Precio: $0.00"
+        android:textColor="@color/gold"
+        android:textSize="16sp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewProductStock"
+        app:layout_constraintWidth_percent="0.8" />
+
+    <!-- Botón para Agregar Producto al Carrito -->
+    <ImageButton
+        android:id="@+id/imageButtonAddToCart"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="8dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Agregar al Carrito"
+        android:scaleType="centerInside"
+        android:src="@drawable/baseline_add_shopping_cart_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewProductPrice" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

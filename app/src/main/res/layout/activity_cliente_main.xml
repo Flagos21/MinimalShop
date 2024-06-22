@@ -32,5 +32,17 @@
             android:textColor="@color/gold"
             android:textSize="24sp"
             android:textStyle="bold" />
+        <Button
+            android:id="@+id/btnViewC"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/gold"
+            android:fontFamily="serif"
+            android:text="VER PRODUCTOS"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
