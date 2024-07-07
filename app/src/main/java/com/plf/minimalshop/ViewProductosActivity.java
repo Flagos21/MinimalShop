@@ -3,7 +3,6 @@ package com.plf.minimalshop;
 import android.os.Bundle;
 import android.widget.SearchView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
-import com.plf.minimalshop.R;
 import com.plf.minimalshop.adapter.ProductosAdapter;
 import com.plf.minimalshop.model.Productos;
 
@@ -35,7 +33,7 @@ public class ViewProductosActivity extends AppCompatActivity {
     }
 
     private void setUpRecyclerView() {
-        Query query = db.collection("productos").orderBy("productName", Query.Direction.ASCENDING);
+        Query query = db.collection("productos").orderBy("productCategory", Query.Direction.ASCENDING);
 
         FirestoreRecyclerOptions<Productos> options = new FirestoreRecyclerOptions.Builder<Productos>()
                 .setQuery(query, Productos.class)
@@ -56,6 +54,7 @@ public class ViewProductosActivity extends AppCompatActivity {
             }
         });
     }
+
 
     private void configureSearchView() {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {

@@ -21,6 +21,9 @@
         android:theme="@style/Theme.MinimalShop"
         tools:targetApi="31">
         <activity
+            android:name=".ViewCarritoActivity"
+            android:exported="false" />
+        <activity
             android:name=".ViewProductosActivity"
             android:exported="false" />
         <activity

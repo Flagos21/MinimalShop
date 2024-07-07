@@ -104,19 +104,4 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewProductStock"
         app:layout_constraintWidth_percent="0.8" />
 
-    <!-- Botón para Agregar Producto al Carrito -->
-    <ImageButton
-        android:id="@+id/imageButtonAddToCart"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="8dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:contentDescription="Agregar al Carrito"
-        android:scaleType="centerInside"
-        android:src="@drawable/baseline_add_shopping_cart_24"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewProductPrice" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
