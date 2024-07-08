@@ -1,6 +1,8 @@
 package com.plf.minimalshop;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.SearchView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,6 +30,12 @@ public class ViewProductosActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.ProductosMinimal);
         searchView = findViewById(R.id.searchView);
 
+        Button buttonCarrito = findViewById(R.id.buttonCarrito);
+        buttonCarrito.setOnClickListener(v -> {
+            Intent intent = new Intent(ViewProductosActivity.this, ViewCarritoActivity.class);
+            startActivity(intent);
+        });
+
         setUpRecyclerView();
         configureSearchView();
     }
@@ -54,7 +62,6 @@ public class ViewProductosActivity extends AppCompatActivity {
             }
         });
     }
-
 
     private void configureSearchView() {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {

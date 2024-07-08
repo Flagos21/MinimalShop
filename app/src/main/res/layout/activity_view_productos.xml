@@ -8,6 +8,24 @@
     android:background="@color/black"
     tools:context=".ViewProductosActivity">
 
+    <!-- Botón CARRITO -->
+    <Button
+        android:id="@+id/buttonCarrito"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/gold"
+        android:fontFamily="serif"
+        android:text="CARRITO"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/linearLayout5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <LinearLayout
         android:id="@+id/linearLayout5"
         android:layout_width="0dp"
@@ -20,7 +38,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/buttonCarrito">
 
         <!-- SearchView for searching products -->
 
@@ -46,6 +64,7 @@
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold" />
+
         </LinearLayout>
 
         <SearchView
@@ -53,7 +72,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:iconifiedByDefault="false"
-            android:queryHint="Buscar productos" />
+            android:queryHint="Buscar productos" >
+
+        </SearchView>
 
         <LinearLayout
             android:layout_width="match_parent"
