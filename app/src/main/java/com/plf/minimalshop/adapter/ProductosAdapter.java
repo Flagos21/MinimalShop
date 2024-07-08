@@ -68,41 +68,96 @@ public class ProductosAdapter extends FirestoreRecyclerAdapter<Productos, Produc
                 // Obtener el ID del usuario actual
                 String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-                // Acceder a la colección "users" -> "userId" -> "cart" y agregar el producto
+                // Verificar si el producto ya está en el carrito del usuario
                 db.collection("users")
                         .document(userId)
                         .collection("cart")
                         .document(productId)
-                        .set(producto)
-                        .addOnSuccessListener(aVoid -> {
-                            Log.d("ProductosAdapter", "Producto agregado al carrito: " + productId);
+                        .get()
+                        .addOnCompleteListener(task -> {
+                            if (task.isSuccessful()) {
+                                if (task.getResult().exists()) {
+                                    // Si el producto ya está en el carrito, actualizar solo la cantidad
+                                    String currentQuantityStr = task.getResult().getString("productStock");
+                                    int currentQuantity = Integer.parseInt(currentQuantityStr);
+                                    int newQuantity = currentQuantity + 1;
+                                    db.collection("users")
+                                            .document(userId)
+                                            .collection("cart")
+                                            .document(productId)
+                                            .update("productStock", String.valueOf(newQuantity))
+                                            .addOnSuccessListener(aVoid -> {
+                                                Log.d("ProductosAdapter", "Cantidad del producto actualizada en el carrito: " + productId);
+                                                Toast.makeText(activity, "Producto agregado al carrito", Toast.LENGTH_SHORT).show();
+                                            })
+                                            .addOnFailureListener(e -> {
+                                                Log.e("ProductosAdapter", "Error al actualizar cantidad del producto en el carrito", e);
+                                                Toast.makeText(activity, "Error al agregar producto al carrito", Toast.LENGTH_SHORT).show();
+                                            });
+                                } else {
+                                    // Si el producto no está en el carrito, agregarlo con cantidad 1
+                                    producto.setProductStock("1"); // Setear la cantidad en el carrito
+                                    db.collection("users")
+                                            .document(userId)
+                                            .collection("cart")
+                                            .document(productId)
+                                            .set(producto)
+                                            .addOnSuccessListener(aVoid -> {
+                                                Log.d("ProductosAdapter", "Producto agregado al carrito: " + productId);
+                                                Toast.makeText(activity, "Producto agregado al carrito", Toast.LENGTH_SHORT).show();
+                                            })
+                                            .addOnFailureListener(e -> {
+                                                Log.e("ProductosAdapter", "Error al agregar producto al carrito", e);
+                                                Toast.makeText(activity, "Error al agregar producto al carrito", Toast.LENGTH_SHORT).show();
+                                            });
+                                }
 
-                            // Mostrar mensaje de éxito al usuario
-                            Toast.makeText(activity, "Producto agregado al carrito", Toast.LENGTH_SHORT).show();
-
-                            // Actualizar el stock en Firestore: restar 1 al stock actual
-                            int newStock = Integer.parseInt(producto.getProductStock()) - 1;
-                            db.collection("productos")
-                                    .document(productId)
-                                    .update("productStock", String.valueOf(newStock))
-                                    .addOnSuccessListener(aVoid1 -> {
-                                        Log.d("ProductosAdapter", "Stock actualizado: " + newStock);
-                                        // Actualizar la vista si es necesario
-                                        notifyDataSetChanged();
-                                    })
-                                    .addOnFailureListener(e -> {
-                                        Log.e("ProductosAdapter", "Error al actualizar stock", e);
-                                    });
-                        })
-                        .addOnFailureListener(e -> {
-                            Log.e("ProductosAdapter", "Error al agregar producto al carrito", e);
-                            Toast.makeText(activity, "Error al agregar producto al carrito", Toast.LENGTH_SHORT).show();
+                                // Verificar nuevamente el stock general del producto antes de actualizar
+                                db.collection("productos")
+                                        .document(productId)
+                                        .get()
+                                        .addOnSuccessListener(documentSnapshot -> {
+                                            if (documentSnapshot.exists()) {
+                                                String currentStockStr = documentSnapshot.getString("productStock");
+                                                int currentStock = Integer.parseInt(currentStockStr);
+                                                if (currentStock > 0) {
+                                                    // Actualizar el stock en Firestore: restar 1 al stock actual
+                                                    int newStock = currentStock - 1;
+                                                    db.collection("productos")
+                                                            .document(productId)
+                                                            .update("productStock", String.valueOf(newStock))
+                                                            .addOnSuccessListener(aVoid -> {
+                                                                Log.d("ProductosAdapter", "Stock general del producto actualizado: " + newStock);
+                                                                notifyDataSetChanged();
+                                                            })
+                                                            .addOnFailureListener(e -> {
+                                                                Log.e("ProductosAdapter", "Error al actualizar stock general del producto", e);
+                                                            });
+                                                } else {
+                                                    Log.d("ProductosAdapter", "No hay suficiente stock general del producto para actualizar.");
+                                                    // Mostrar mensaje o tomar otra acción según sea necesario
+                                                }
+                                            } else {
+                                                Log.d("ProductosAdapter", "Documento del producto no encontrado en Firestore.");
+                                            }
+                                        })
+                                        .addOnFailureListener(e -> {
+                                            Log.e("ProductosAdapter", "Error al obtener documento del producto en Firestore", e);
+                                        });
+                            } else {
+                                Log.e("ProductosAdapter", "Error al verificar producto en el carrito", task.getException());
+                                Toast.makeText(activity, "Error al agregar producto al carrito", Toast.LENGTH_SHORT).show();
+                            }
                         });
             } else {
                 // Mostrar mensaje si no hay suficiente stock
                 Toast.makeText(activity, "¡Producto sin stock!", Toast.LENGTH_SHORT).show();
             }
         });
+
+
+
+
     }
 
     @Override
